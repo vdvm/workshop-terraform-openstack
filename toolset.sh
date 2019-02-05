@@ -3,8 +3,8 @@ set -ex
 
 export DEBIAN_FRONTEND=noninteractive
 
-TERRAFORM_VERSION=0.11.10
-TERRAFORM_CHECKSUM=43543a0e56e31b0952ea3623521917e060f2718ab06fe2b2d506cfaa14d54527
+TERRAFORM_VERSION=0.11.11
+TERRAFORM_CHECKSUM=94504f4a67bad612b5c8e3a4b7ce6ca2772b3c1559630dfd71e9c519e3d6149c
 
 # Upgrade packages
 apt-get update && \
@@ -30,6 +30,7 @@ wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${T
     echo "${TERRAFORM_CHECKSUM}  terraform_${TERRAFORM_VERSION}_linux_amd64.zip" > terraform.checksum && \
     sha256sum --strict --check terraform.checksum && \
     unzip -u terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin && \
+    chmod 0755 /usr/local/bin/terraform && \
     rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip terraform.checksum
 
 # Install Ansible
