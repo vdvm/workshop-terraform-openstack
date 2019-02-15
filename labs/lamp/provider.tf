@@ -3,5 +3,5 @@ terraform {
 }
 
 provider "openstack" {
-  version = "~> 1.10"
+  version = "= 1.13"
 }
